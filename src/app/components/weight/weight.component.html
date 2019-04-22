@@ -1,0 +1,18 @@
+<form
+  id="weightForm"
+  [formGroup]="weightForm"
+  class="border border-light p-5"
+  (ngSubmit)="onSubmit()"
+>
+  <input
+    type="text"
+    class="form-control mb-4"
+    formControlName="weight"
+    [ngClass]="{ 'is-invalid': submitted && f.weight.errors }"
+  />
+  <label>lbs</label>
+  <div *ngIf="submitted && f.weight?.errors" class="invalid-feedback mb-2">
+    <div *ngIf="f.weight?.errors.required">Weight is required</div>
+    <div *ngIf="f.weight?.errors.pattern">Numbers Only</div>
+  </div>
+</form>

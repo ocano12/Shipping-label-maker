@@ -1,0 +1,27 @@
+<app-wizard-header></app-wizard-header>
+<div class="card" style=" height: auto;">
+  <div class="card-header">
+    {{ title }}
+  </div>
+
+  <router-outlet></router-outlet>
+
+  <div class="btn-group>">
+    <button id="prev" class="btn" (click)="previous()" [disabled]="data === 0">
+      Previous
+    </button>
+    <button
+      id="next"
+      class="btn"
+      (click)="next()"
+      [disabled]="data === steps.length - 1"
+      *ngIf="data < steps.length - 1"
+    >
+      Next >
+    </button>
+
+    <button class="btn" (click)="confirm()" *ngIf="data === steps.length - 1">
+      Confirm
+    </button>
+  </div>
+</div>

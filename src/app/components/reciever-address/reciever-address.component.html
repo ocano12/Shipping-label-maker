@@ -1,0 +1,66 @@
+<form [formGroup]="recieverForm" class="border border-light p-5" (ngSubmit)="onSubmit()">
+  <!-- (ngSubmit)="onSubmit() -->
+  <label>Name:</label>
+  <input
+    type="text"
+    formControlName="name"
+    class="form-control mb-4"
+    [ngClass]="{ 'is-invalid': submitted && f.name.errors }"
+  />
+  <div *ngIf="submitted && f.name.errors" class="invalid-feedback mb-2">
+    <div *ngIf="f.name.errors.required">Name is required</div>
+  </div>
+
+  <label>Street:</label>
+  <input
+    type="text"
+    class="form-control mb-4"
+    formControlName="street"
+    [ngClass]="{ 'is-invalid': submitted && f.street.errors }"
+  />
+  <div *ngIf="submitted && f.street.errors" class="invalid-feedback mb-2">
+    <div *ngIf="f.street.errors.required">Street is required</div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <label>City:</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="city"
+        [ngClass]="{ 'is-invalid': submitted && f.city.errors }"
+      />
+      <div *ngIf="submitted && f.city.errors" class="invalid-feedback mb-2">
+        <div *ngIf="f.city.errors.required">City is required</div>
+      </div>
+    </div>
+
+    <div class="col">
+      <label>State:</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="state"
+        [ngClass]="{ 'is-invalid': submitted && f.state.errors }"
+      />
+      <div *ngIf="submitted && f.state.errors" class="invalid-feedback mb-2">
+        <div *ngIf="f.state.errors.required">State is required</div>
+      </div>
+    </div>
+    <div class="col">
+      <label>Zip-Code:</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="zipCode"
+        [ngClass]="{ 'is-invalid': submitted && f.zipCode.errors }"
+      />
+      <div *ngIf="submitted && f.zipCode.errors" class="invalid-feedback mb-2">
+        <div *ngIf="f.zipCode.errors.required">Zip-Code is required</div>
+        <div *ngIf="f.zipCode.errors.pattern">Numbers Only</div>
+        <div *ngIf="f.zipCode.errors.minLength">Minimum 5 Numbers</div>
+      </div>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,18 @@
+<form id="optionForm" [formGroup]="form" class="border border-light p-5" (ngSubmit)="onSubmit()">
+  <label for="shippingOptions">shippingOption</label>
+  <select
+    class="custom-select my-1 mr-sm-2"
+    formControlName="shippingOptions"
+    id="shippingOptions"
+    (change)="calculateShippingCost($event.target.value)"
+  >
+    <option *ngFor="let shippingOption of shippingOptions; let i = index" [value]="shippingOptions[i].id">
+      {{ shippingOptions[i].name }}
+    </option>
+  </select>
+
+  <div id="price" class="mt-3">
+    <label>Price:</label>
+    <p>{{ shippingCost }}</p>
+  </div>
+</form>

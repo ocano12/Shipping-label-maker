@@ -1,0 +1,7 @@
+<div class="container">
+  <div>
+    <h1>Shipping Label Maker</h1>
+    <img id="img" src="assets/images/shippingTruck.png" />
+  </div>
+  <app-wizard [steps]="steps" (complete)="getShippingLabelObject($event)"></app-wizard>
+</div>

@@ -1,0 +1,28 @@
+<div
+  class="card"
+  style="width: 50rem; height:auto"
+  *ngFor="let header of summaryProps; let i = index"
+  [ngSwitch]="header"
+>
+  <div class="card-header">
+    {{ header }}
+  </div>
+  <div *ngSwitchDefault>
+    <p>Name: {{ summary[header].name }}</p>
+    <p>Street: {{ summary[header].street }}</p>
+    <p>City: {{ summary[header].city }}</p>
+    <p>State: {{ summary[header].state }}</p>
+    <p>Zip-Code: {{ summary[header].zipCode }}</p>
+  </div>
+  <div *ngSwitchCase="'weight'">
+    <p>Weight: {{ summary[header].weight }}</p>
+  </div>
+  <div *ngSwitchCase="'shippingOption'">
+    <p *ngIf="summary[header].shippingOptions == 1; else optionBlock">
+      Shipping Option: Ground
+    </p>
+    <ng-template #optionBlock>
+      <p>Shipping Option: Priority</p>
+    </ng-template>
+  </div>
+</div>
